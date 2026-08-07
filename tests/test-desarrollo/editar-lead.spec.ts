@@ -1,11 +1,11 @@
 import { test, expect } from '@playwright/test';
-
+import { datos } from '../../data/config';
 test('test', async ({ page }) => {
-  await page.goto('https://crm-dev.reygom.com/');
+  await page.goto(datos.url);
   await page.getByRole('textbox', { name: 'Usuario' }).click();
-  await page.getByRole('textbox', { name: 'Usuario' }).fill('admin');
+  await page.getByRole('textbox', { name: 'Usuario' }).fill(datos.login.usuario);
   await page.getByRole('textbox', { name: 'Contraseña' }).click();
-  await page.getByRole('textbox', { name: 'Contraseña' }).fill('QAOpsAdmin202');
+  await page.getByRole('textbox', { name: 'Contraseña' }).fill(datos.login.password);
   await page.getByRole('button', { name: 'INGRESAR AL SISTEMA' }).click();
   await page.getByRole('link', { name: 'Leads' }).click();
   await page.getByRole('heading', { name: '👤 fghfgh' }).click();

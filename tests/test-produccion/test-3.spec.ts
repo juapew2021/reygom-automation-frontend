@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
-
+import { datos } from '../../data/produccion';
 test('Eliminar inmueble y validar mensaje', async ({ page }) => {
-  await page.goto('https://crm.reygom.com/');
-  await page.getByRole('textbox', { name: 'Usuario' }).fill('admin');
-  await page.getByRole('textbox', { name: 'Contraseña' }).fill('ReyGom2026*');
+  await page.goto(datos.url);
+  await page.getByRole('textbox', { name: 'Usuario' }).fill(datos.login.usuario);
+  await page.getByRole('textbox', { name: 'Contraseña' }).fill(datos.login.password);
   await page.getByRole('button', { name: 'INGRESAR AL SISTEMA' }).click();
 
   await page.getByRole('link', { name: 'Inmuebles' }).click();

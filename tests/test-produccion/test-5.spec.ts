@@ -1,18 +1,11 @@
 import { test, expect } from '@playwright/test';
-
+import { datos } from '../../data/produccion';
 test('test', async ({ page }) => {
-  await page.goto('https://crm.reygom.com/');
+  await page.goto(datos.url);
   await page.getByRole('textbox', { name: 'Usuario' }).click();
-  await page.getByRole('textbox', { name: 'Usuario' }).fill('admin');
+  await page.getByRole('textbox', { name: 'Usuario' }).fill(datos.login.usuario);
   await page.getByRole('textbox', { name: 'Contraseña' }).click();
-  await page.getByRole('textbox', { name: 'Contraseña' }).press('CapsLock');
-  await page.getByRole('textbox', { name: 'Contraseña' }).fill('R');
-  await page.getByRole('textbox', { name: 'Contraseña' }).press('CapsLock');
-  await page.getByRole('textbox', { name: 'Contraseña' }).fill('Rey');
-  await page.getByRole('textbox', { name: 'Contraseña' }).press('CapsLock');
-  await page.getByRole('textbox', { name: 'Contraseña' }).fill('ReyG');
-  await page.getByRole('textbox', { name: 'Contraseña' }).press('CapsLock');
-  await page.getByRole('textbox', { name: 'Contraseña' }).fill('ReyGom2026*');
+  await page.getByRole('textbox', { name: 'Contraseña' }).fill(datos.login.password);
   await page.getByRole('button', { name: 'INGRESAR AL SISTEMA' }).click();
   await page.getByRole('link', { name: 'Leads' }).click();
   await page.getByRole('button', { name: 'Editar' }).first().click();
